@@ -82,7 +82,7 @@ if {![file exists $www_dir]} {
 }
 
 set templates [list bcms-default content_revision "Default Content Template" bcms-folder-default content_folder "Default Folder Template"]
-set template_base "[acs_root_dir]/packages/bcms-ui-base/lib/"
+set template_base "[acs_root_dir]/packages/xcms-ui/lib/"
 foreach {filename content_type title } $templates {
 
        set template_id [bcms::template::create_template \

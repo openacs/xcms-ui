@@ -5,5 +5,5 @@
 <property name="context">context</property>
 <fieldset class="formtemplate">
 <legend>@title@</legend>
-<include src="/packages/bcms-ui-base/lib/page-form" parent_id="@parent_id@" return_url="@return_url@">
+<include src="/packages/bcms-ui-base/resources/page-form" parent_id="@parent_id@" return_url="@return_url@">
 </fieldset>

@@ -4,7 +4,7 @@
 
 <fieldset class="formtemplate">
 <legend>@title@</legend>
-<include src="/packages/bcms-ui-base/lib/page-form" revision_id="@revision_id@" return_url="@return_url@" form_mode="display">
+<include src="/packages/bcms-ui-base/resources/page-form" revision_id="@revision_id@" return_url="@return_url@" form_mode="display">
 
 </fieldset>
 

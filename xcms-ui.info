@@ -23,6 +23,7 @@
         <requires url="categories" version="1.0d4"/>
 
         <callbacks>
+            <callback type="after-mount"  proc="xcms_ui::install::after_mount"/>
         </callbacks>
         <parameters>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="TemplateRoot"  default="packages/xcms-ui/" description="Root folder for templates"/>

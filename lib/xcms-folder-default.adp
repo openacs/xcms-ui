@@ -1,4 +1,4 @@
-<master src="/packages/bcms-ui-base/www/master">
+<master src="/packages/xcms-ui/www/master">
 <property name="title">@label;noquote@</property>
 <property name="context">@context;noquote@</property>
 

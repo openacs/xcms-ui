@@ -13,7 +13,6 @@ ad_page_contract {
 # Get the paths
 set the_root [ns_info pageroot]
 set the_url "/[ad_conn path_info]"
-ns_log notice "DAVEB start $the_root / $the_url"
 # Get the IDs
 # Ugly hack to workaround the fact that a URL on index will match
 # index.vuh, causing path_info to be empty
@@ -22,11 +21,11 @@ if {[string equal "index" [lindex [ad_conn urlv] end]] && ![string match "*index
 	append the_url "index"
 }
 
+set xcms_package_id "REPLACE-PACKAGE-ID"
+set content_root [parameter::get -parameter root_folder_id -package_id $xcms_package_id]
+set template_root [parameter::get -parameter template_folder_id -package_id $xcms_package_id]
 
-set content_root [parameter::get -parameter root_folder_id -default "-100"]
-set template_root [parameter::get -parameter template_folder_idi -default "-200"]
-ns_log notice "content_root $content_root template_root $template_root"
-set context [parameter::get -parameter cms_context -default "public"]
+set context "REPLACE-USE-CONTEXT"
 
 # Serve the page
 

@@ -23,7 +23,8 @@ if {[string equal "index" [lindex [ad_conn urlv] end]] && ![string match "*index
 	append the_url "index"
 }
 
-
+#set content_root [xcms_ui::content_root]
+#set template_root [xcms_ui::template_root]
 set content_root [parameter::get -parameter root_folder_id -default "-100"]
 set template_root [parameter::get -parameter template_folder_id -default "-200"]
 

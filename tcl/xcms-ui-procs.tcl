@@ -9,9 +9,9 @@ ad_library {
 }
 
 
-namespace eval bcms_ui_base {}
+namespace eval xcms_ui {}
 
-ad_proc -public bcms_ui_base::move_url {
+ad_proc -public xcms_ui::move_url {
     {-items_to_move:required}
     {-destination_folder:required}
     {-return_url:required}
@@ -43,7 +43,7 @@ ad_proc -public bcms_ui_base::move_url {
 }
 
 
-ad_proc -public bcms_ui_base::delete_url {
+ad_proc -public xcms_ui::delete_url {
     {-items_to_delete:required}
     {-return_url:required}
     {-confirm:boolean}
@@ -69,7 +69,7 @@ ad_proc -public bcms_ui_base::delete_url {
     }
 }
 
-ad_proc -public bcms_ui_base::apply_template_url {
+ad_proc -public xcms_ui::apply_template_url {
     {-item_id:required}
     {-template_id:required}
     {-return_url:required}
@@ -88,7 +88,7 @@ ad_proc -public bcms_ui_base::apply_template_url {
 
 }
     
-ad_proc -public bcms_ui_base::delete_template_url {
+ad_proc -public xcms_ui::delete_template_url {
     {-templates_to_delete:required}
     {-return_url:required}
 } {
@@ -106,7 +106,7 @@ ad_proc -public bcms_ui_base::delete_template_url {
 
 }
 
-ad_proc -public bcms_ui_base::switch_cms_context_url {
+ad_proc -public xcms_ui::switch_cms_context_url {
     {-cms_context:required}
     {-return_url}
 } {
@@ -127,7 +127,7 @@ ad_proc -public bcms_ui_base::switch_cms_context_url {
 
 }
 
-ad_proc -public bcms_ui_base::context_action_link {
+ad_proc -public xcms_ui::context_action_link {
     {-context_action:required}
     {-export_vars:required}
     {-context_action_label}
@@ -341,7 +341,7 @@ ad_proc -public bcms_ui_base::context_action_link {
 }
 
 
-ad_proc -public bcms_ui_base::redirect_after_rename {
+ad_proc -public xcms_ui::redirect_after_rename {
     {-item_id:required}
     {-url_base "[ad_conn package_url]"}
 } {
@@ -361,7 +361,7 @@ ad_proc -public bcms_ui_base::redirect_after_rename {
     ad_script_abort
 }
 
-ad_proc -public bcms_ui_base::check_include_vars {
+ad_proc -public xcms_ui::check_include_vars {
 } {
     check item_id, folder_id, revision_id, form_mode and return_url vars.  This is used for the forms that is included in /xcms-ui/lib
 } {
@@ -383,4 +383,34 @@ ad_proc -public bcms_ui_base::check_include_vars {
     if {![info exists return_url]} {
         error "return_url does not exists, please pass in return_url"
     }
+}
+
+ad_proc xcms_ui::content_root {
+    {-node_id ""}
+} {
+    @param node_id If node_id is specified content root is returned
+     for that site_node. Otherwise the node_id of the current request
+    is used.
+    @return content folder_id for node_id. empty string if no folder
+	is mapped to node_id
+    
+} {
+
+    return [db_string get_content_root "" -default ""]
+
+    
+}
+
+ad_proc xcms_ui::template_root {
+    {-node_id ""}
+} {
+    @param node_id If node_id is specified content root is returned
+     for that site_node. Otherwise the node_id of the current request
+    is used.
+    @return content folder_id for node_id. empty string if no folder
+	is mapped to node_id
+} {
+
+    return [db_string get_content_root "" -default ""]
+    
 }

@@ -1,3 +1,4 @@
+
 ad_page_contract {
 
 	setup folders and templates
@@ -51,7 +52,7 @@ if {[string equal $sn(node_id) [site_node::get_node_id  -url "/"]]} {
 		-content_types "content_revision content_folder content_extlink content_symlink image" \
 		-subtypes
 		]
-		
+
 	# Main Subsite folder -100 already has a corresponding template
 	# folder. If we are not setting up for folder_id -100 create
 	# a template folder also
@@ -69,8 +70,8 @@ if {[string equal $sn(node_id) [site_node::get_node_id  -url "/"]]} {
 
 # load in default templates
 
-set template_root "/templates${sn(url)}"
-set template_dir "[acs_root_dir]${template_root}"
+set template_root "templates${sn(url)}"
+set template_dir "[acs_root_dir]/${template_root}"
 set www_dir "[acs_root_dir]/www${sn(url)}"
 
 if {![file exists $template_dir]} {
@@ -93,10 +94,14 @@ foreach {filename content_type title } $templates {
 	set content [read $fd]
 	close $fd
 
+       # setup use_context
+
+       db_dml set_use_context "insert into cr_template_use_contexts values ('xcms-${package_id}-public')"
+       
 	bcms::template::register_template \
 		-template_id $template_id \
 		-content_type $content_type \
-		-context "public" \
+		-context "xcms-public" \
 		-is_default_p "t"
 		
 	bcms::template::add_template \
@@ -107,6 +112,19 @@ foreach {filename content_type title } $templates {
 	file copy -force "${template_base}${filename}.adp" "${template_base}${filename}.tcl" $template_dir
 
 }
+
+
+# import the sample index page
+set fd [open ${template_base}sample-index.adp]
+set sample_index_content [read $fd]
+close $fd
+
+bcms::create_page \
+    -page_name "index" \
+    -folder_id $folder_id \
+    -mime_type "text/html" \
+    -title "XCMS Sample Index" \
+    -page_body $sample_index_content
 
 # set parameters
 

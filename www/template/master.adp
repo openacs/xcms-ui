@@ -2,7 +2,7 @@
 <property name="context">@context;noquote@</property>
 <property name="title">@title@</property>
 <div id="main">
-<include src="/packages/bcms-ui-base/lib/navbar">
+<include src="/packages/xcms-ui/lib/navbar">
     <div id="contextpane">
         <if @context_action@ not nil>
         <div id="contextaction">

@@ -1,0 +1,61 @@
+################## KLUDGE BY STAS ###############
+# Try and look up the item in the content repository
+#################################################
+ad_page_contract {
+   
+    @author Unknown
+    @creation-date Unknown
+    @cvs-id $Id$
+} {    
+    { revision_id "" }
+}
+
+# Get the paths
+#set the_root [ns_info pageroot]
+set the_url "/[ad_conn path_info]"
+
+# Ugly hack to workaround the fact that a URL on index will match
+# index.vuh, causing path_info to be empty
+
+
+if {[string equal "index" [lindex [ad_conn urlv] end]] && ![string match "*index" $the_url]} {
+	append the_url "index"
+}
+
+ns_log notice "DAVEB url [ad_conn url] path_info [ad_conn path_info] the_url $the_url"
+# Get the IDs
+
+set content_root [parameter::get -parameter root_folder_id -default "-100"]
+namespace eval content {
+	variable root_folder_id
+	set root_folder_id ""
+}
+set ::content::root_folder_id $content_root
+ns_log notice "DAVEB content_root $content_root"
+
+array set item [bcms::item::get_item_by_url -root_id $content_root \
+		-url $the_url \
+		]
+
+if {[array size item] == 0} {
+	ns_returnnotfound
+}
+rp_form_put item [array get item]
+switch -- $item(content_type) {
+
+	content_folder {
+		rp_internal_redirect "folder-view"
+	}
+	image {
+		rp_internal_redirect "image-view"
+	}
+	default { # content_revision
+		
+		rp_internal_redirect "item-view"
+	}
+
+
+
+}
+
+

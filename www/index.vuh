@@ -1,0 +1,53 @@
+ns_log notice "RUNNING bcms-ui-base/www/index.vuh"
+################## KLUDGE BY STAS ###############
+# Try and look up the item in the content repository
+#################################################
+ad_page_contract {
+   
+    @author Unknown
+    @creation-date Unknown
+    @cvs-id $Id$
+} {    
+    { revision_id "" }
+}
+
+# Get the paths
+set the_root [ns_info pageroot]
+set the_url "/[ad_conn path_info]"
+ns_log notice "DAVEB start $the_root / $the_url"
+# Get the IDs
+# Ugly hack to workaround the fact that a URL on index will match
+# index.vuh, causing path_info to be empty
+
+if {[string equal "index" [lindex [ad_conn urlv] end]] && ![string match "*index" $the_url]} {
+	append the_url "index"
+}
+
+
+set content_root [parameter::get -parameter root_folder_id -default "-100"]
+set template_root [parameter::get -parameter template_folder_id -default "-200"]
+
+ns_log notice "content_root $content_root template_root $template_root"
+set context [parameter::get -parameter cms_context -default "xcms-public"]
+
+# Serve the page
+
+# DRB: Note that content::init modifies the local variable the_root, which is treated
+# as though it's been passed by reference.   This requires that the redirect treat the
+# path as an absolute path within the filesystem.
+
+if { [content::init -resolve_index "t" -revision "live" the_url the_root $content_root $template_root $context $revision_id ] } {
+set file "$the_root/$the_url"
+ns_log notice "DAVEB! looking for $the_root/$the_url"
+rp_internal_redirect -absolute_path $file
+} else {
+ ns_returnnotfound
+  set page "[ad_header {Content Item Not Found}]"
+  append page "<h3>Content Item Not Found</h3>"
+  append page "The requested item is not available for viewing.  "
+  append page "The item is either not available on this server or it is not in a publishable state  "
+  append page "Unpublished items can be viewed via the CMS interface if the CMS package is installed.<br>"
+  append page "[ad_footer]"
+  doc_return 200 text/html $page
+}
+

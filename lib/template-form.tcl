@@ -92,6 +92,6 @@ set template_filename "${template_root}/${template_path}.adp"
 
 }
 
-ad_return_template "/packages/bcms-ui-base/lib/simple-form"
+ad_return_template "/packages/xcms-ui/lib/simple-form"
 
 

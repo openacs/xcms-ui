@@ -29,16 +29,15 @@ ad_form -name add-item  -export {return_url} -form {
 	ad_returnredirect "[ad_conn package_url]manage/${item_type}?[export_vars {{parent_id $folder_id} return_url}]"
 }
 
+set url_base "${package_url}/manage/"
+
     template::list::create \
         -name item_list \
         -multirow item_list \
         -pass_properties { package_url } \
         -key item_id \
-        -actions [list \
-	     "Set Folder Category" "/categories/cadmin/one-object?[export_vars {{object_id $folder_id} return_url}]" "Set the root category for the currently displayed folder" \
-	      "Change Template" "${url_base}apply-template?[export_vars { {item_id $folder_id} return_url}]" "Change the template used to display this item."] \		      
-	    ] \
-	-bulk_actions [list \
+    -actions [list "Set Folder Category" "/categories/cadmin/one-object?[export_vars {{object_id $folder_id} return_url}]" "Set the root category for the currently displayed folder" "Change Template" "${url_base}apply-template?[export_vars { {item_id $folder_id} return_url}]" "Change the template used to display this item."] \
+    -bulk_actions [list \
             "Delete" "${package_url}manage/delete-item" "Delete checked items" \
             "Move" "${package_url}manage/move-item" "Move checked items" \
                           ]\

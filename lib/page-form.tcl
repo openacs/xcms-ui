@@ -119,6 +119,6 @@ ns_log notice "DAVEB page-form edit_data"
 
 }
 
-ad_return_template "/packages/bcms-ui-base/lib/simple-form"
+ad_return_template "/packages/xcms-ui/lib/simple-form"
 
 

@@ -66,6 +66,6 @@ ad_form -name simpleform  -mode $form_mode -html {enctype multipart/form-data} -
 
 }
 
-ad_return_template "/packages/bcms-ui-base/lib/simple-form"
+ad_return_template "/packages/xcms-ui/lib/simple-form"
 
 

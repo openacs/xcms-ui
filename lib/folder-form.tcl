@@ -91,5 +91,5 @@ ad_form -name simpleform -mode $form_mode -has_edit 1 -form {
 } 
 
 
-ad_return_template "/packages/bcms-ui-base/lib/simple-form"
+ad_return_template "/packages/xcms-ui/lib/simple-form"
 

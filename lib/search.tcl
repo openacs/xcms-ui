@@ -101,27 +101,27 @@ if {$display_search_results} {
                 label "Type"
                 display_template { 
                     <if @search_results.content_type@ eq content_folder>
-                    <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/folder.png" border="0"></a>
+                    <a href=@search_results.name@><img src="@package_url@xcms-ui-images/folder.png" border="0"></a>
                     </if>
                     <if @search_results.content_type@ eq content_revision>
                        <if @search_results.storage_type@ eq text>
-                          <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/page.png" border="0"></a>
+                          <a href=@search_results.name@><img src="@package_url@xcms-ui-images/page.png" border="0"></a>
                        </if>
                        <else>
-                          <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/file.png" border="0"></a>
+                          <a href=@search_results.name@><img src="@package_url@xcms-ui-images/file.png" border="0"></a>
                        </else>
                     </if> 
                     <if @search_results.content_type@ eq image>
-                    <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/image.png" border="0"></a>
+                    <a href=@search_results.name@><img src="@package_url@xcms-ui-images/image.png" border="0"></a>
                     </if>
                     <if @search_results.content_type@ eq sb_writing>
-                    <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/sb_writing.png" border="0"></a>
+                    <a href=@search_results.name@><img src="@package_url@xcms-ui-images/sb_writing.png" border="0"></a>
                     </if>
                     <if @search_results.content_type@ eq sb_event>
-                    <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/sb_event.png" border="0"></a>
+                    <a href=@search_results.name@><img src="@package_url@xcms-ui-images/sb_event.png" border="0"></a>
                     </if>                    
                     <if @search_results.content_type@ eq sb_download>
-                    <a href=@search_results.name@><img src="@package_url@bcms-ui-base-images/sb_download.png" border="0"></a>
+                    <a href=@search_results.name@><img src="@package_url@xcms-ui-images/sb_download.png" border="0"></a>
                     </if>    
                 }
                 html { style "width:70px" }

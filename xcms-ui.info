@@ -8,17 +8,19 @@
     <singleton-p>f</singleton-p>
     
     <version name="0.1d" url="http://openacs.org/repository/download/apm/xcms-ui-0.1d.apm">
-    <owner url="mailto:dave@thedesignexperience.org">Dave Bauer</owner>
-    <owner url="mailto:goldfish@i-manila.com.ph">Jun Yamog</owner>
+        <owner url="mailto:dave@thedesignexperience.org">Dave Bauer</owner>
+        <owner url="mailto:goldfish@i-manila.com.ph">Jun Yamog</owner>
         <summary>XCMS content management user interface</summary>
         <description format="text/html">XCMS User Interface is a
     content management system built on the OpenACS Content Repository
     and BCMS CR Tcl API. It is a work in progress. Functionality
     includes upload or text entry on content or files, categorization,
     and template editing and assignment.</description>
+        <maturity>0</maturity>
 
         <provides url="xcms-ui" version="0.1d"/>
         <requires url="bcms" version="0.3"/>
+        <requires url="categories" version="1.0d4"/>
 
         <callbacks>
         </callbacks>

@@ -5,7 +5,7 @@
 # return_url - requires a return_url, so after creating or editing a folder it redirect to this url
 # form_mode - either "edit" or "display"
 
-bcms_ui_base::check_include_vars
+xcms_ui::check_include_vars
 
 ad_form -name simpleform  -mode $form_mode -html {enctype multipart/form-data} -form {
     revision_id:key

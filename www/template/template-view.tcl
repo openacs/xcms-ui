@@ -42,3 +42,5 @@ set title "View Template"
 set context [bcms::widget::item_context -item_id $item_id -root_id $root_id]
 set context [lrange $context 0 [expr [llength $context] - 2]]
 lappend context "$template_revision(title)"
+
+set parent_id $template_revision(parent_id)

@@ -5,7 +5,7 @@
 # return_url - requires a return_url, so after creating or editing a folder it redirect to this url
 # form_mode - either "edit" or "display"
 
-bcms_ui_base::check_include_vars
+bcms::ui::base::check_include_vars
 
 set cms_context [parameter::get -parameter cms_context -default ""]
 if {[string equal $cms_context ""]} {

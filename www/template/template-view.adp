@@ -10,5 +10,5 @@
 </multiple>
 
 
-<include src="/packages/bcms-ui-base/lib/template-form" revision_id="@revision_id@" return_url="@return_url@" form_mode="display">
+<include src="/packages/xcms-ui/lib/template-form" revision_id="@revision_id@" return_url="@return_url@" form_mode="display" parent_id="@parent_id@">
 

@@ -25,7 +25,7 @@ if {[info exists template_id]} {
         -elements {
             title {
                 label "Title"
-                link_url_eval {[bcms_ui_base::apply_template_url -item_id $item_id -template_id $template_id -return_url $return_url]}
+                link_url_eval {[xcms_ui::apply_template_url -item_id $item_id -template_id $template_id -return_url $return_url]}
             }
 	    description {
 		label "Description"

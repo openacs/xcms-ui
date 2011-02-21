@@ -25,7 +25,7 @@ ad_proc -public xcms_ui::move_url {
     @param redirect_to_folder    if set to 1 then it will rebuild the return_url pointing to the new
                                  folder being moved to
 
-    @returns a link, normally used for the list builder
+    @return a link, normally used for the list builder
 } {
     set item_id $items_to_move
     set folder_id $destination_folder
@@ -55,7 +55,7 @@ ad_proc -public xcms_ui::delete_url {
     @param confirm             if passed it will generate a link that will delete the items 
                                without confirmation
 
-    @returns a link to delete the items, but if a folder that will be deleted is not empty
+    @return a link to delete the items, but if a folder that will be deleted is not empty
     it will return a null string
 } {
     set item_id $items_to_delete
@@ -80,7 +80,7 @@ ad_proc -public xcms_ui::apply_template_url {
     @param template_id         id of which template to use
     @param return_url          after applying the template, redirect to this url
 
-    @returns a link to apply the template
+    @return a link to apply the template
 } {
 
     set url [export_vars -url -base "[ad_conn package_url]manage/apply-template" {item_id template_id return_url}]
@@ -97,7 +97,7 @@ ad_proc -public xcms_ui::delete_template_url {
     @param templates_to_delete a list of template_id you wish to delet
     @param return_url          after deleting, move to this url
 
-    @returns a link to delete the templates
+    @return a link to delete the templates
 } {
     set confirm_p 1
     set template_id $templates_to_delete
@@ -115,7 +115,7 @@ ad_proc -public xcms_ui::switch_cms_context_url {
     @param cms_context  switch to which cms_context
     @param return_url   set where to redirect after switching cms_context
 
-    @returns a url to on how to switch to a cms_context
+    @return a url to on how to switch to a cms_context
 } {
 
     set package_url [ad_conn package_url]

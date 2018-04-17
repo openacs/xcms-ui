@@ -52,7 +52,7 @@ ad_form -name simpleform -mode $form_mode -html {enctype multipart/form-data} -f
 	set mime_type [template::util::richtext_or_file::get_property mime_type $content]
 	set content [template::util::richtext_or_file::get_property text $content]
 # DAVEB always create a new revision on edit
-# have a RENAME function. name shouldn't be edited ususally. it breaks
+# have a RENAME function. name shouldn't be edited usually. it breaks
 # links
 ns_log notice "DAVEB page-form edit_data"
 # TODO: DAVEB Fix this to work with file upload!!
